@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "discussion-ui": [
+        "dist/discussion-ui"
+      ],
+      "discussion-ui/*": [
+        "dist/discussion-ui/*"
+      ]
+    }
   }
 }
