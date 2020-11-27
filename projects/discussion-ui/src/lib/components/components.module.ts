@@ -1,3 +1,4 @@
+import { ElementsModule } from './../elements/elements.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidePannelComponent } from './side-pannel/side-pannel.component';
@@ -16,7 +17,8 @@ import { MyDiscussionComponent } from './my-discussion/my-discussion.component';
     MyDiscussionComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ElementsModule
   ],
   exports: [
     SidePannelComponent,
