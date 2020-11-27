@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiscussionService } from '../../services/discussion.service';
 
 @Component({
   selector: 'lib-discuss-category',
@@ -9,10 +10,18 @@ export class DiscussCategoryComponent implements OnInit {
 
   categories: any;
 
-  constructor() { }
+  constructor( public discussService: DiscussionService) { }
 
   ngOnInit() {
+    this.init();
     this.fetchCategories();
+  }
+  init() {
+    this.discussService.fetchAllCategories().subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
   }
 
   fetchCategories() {

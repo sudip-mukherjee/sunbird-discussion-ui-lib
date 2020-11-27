@@ -1,3 +1,5 @@
+import { DiscussionService } from './../services/discussion.service';
+import { HttpClientModule } from '@angular/common/http';
 import { ElementsModule } from './../elements/elements.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +20,7 @@ import { MyDiscussionComponent } from './my-discussion/my-discussion.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ElementsModule
   ],
   exports: [
@@ -26,6 +29,9 @@ import { MyDiscussionComponent } from './my-discussion/my-discussion.component';
     DiscussCategoryComponent,
     DiscussTagsComponent,
     MyDiscussionComponent
+  ],
+  providers: [
+    DiscussionService
   ]
 })
 export class ComponentsModule { }
