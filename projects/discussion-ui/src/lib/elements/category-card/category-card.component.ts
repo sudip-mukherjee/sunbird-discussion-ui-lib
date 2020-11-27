@@ -8,13 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CategoryCardComponent implements OnInit {
 
   // TODO: Create interface for type check
-  // TODO: pipeRelativeTime needs to be added
   // TODO: replace mat-icon
-  @Input() cardData: any;
+  @Input() category: any;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.category);
   }
 
 }
