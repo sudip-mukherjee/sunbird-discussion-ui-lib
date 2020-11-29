@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DiscussCardComponent implements OnInit {
 
-  @Input() cardData: any;
+  @Input() discussionData: any;
 
   constructor() { }
 
