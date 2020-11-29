@@ -1,6 +1,7 @@
 export const urlConfig = {
     host: 'http://localhost:3002',
-    getAllCategories: 'discussionHub/categories',
+    userName: "nodebb",
+    getAllCategories: () => `${urlConfig.host}/discussionHub/categories`,
     getSingleCategoryDetails: (cid: number) => `discussionHub/categories/${cid}`,
     getAllTags: 'discussionHub/tags',
     createPost: 'discussionHub/writeApi/v2/topics',
