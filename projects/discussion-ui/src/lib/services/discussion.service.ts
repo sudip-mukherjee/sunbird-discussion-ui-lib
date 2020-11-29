@@ -17,9 +17,10 @@ export class DiscussionService {
     this.usr = { userId: '1234' };
   }
 
-  // get getUserProfile() {
-  //   return this.usr;
-  // }
+  get getUserProfile() {
+    return this.usr;
+  }
+
   appendPage(page: any, url: string) {
     if (page) {
       return `${url}?page=${page}`;
@@ -103,14 +104,14 @@ export class DiscussionService {
   fetchProfileInfo(slug: string) {
     return this.http.get(urlConfig.fetchProfile(slug));
   }
-  fetchUpvoted() {
-    return this.http.get(urlConfig.listUpVote(this.usr.userId));
+  fetchUpvoted() {//0
+    return this.http.get(urlConfig.listUpVote('venkat'));
   }
-  fetchDownvoted() {
-    return this.http.get(urlConfig.listDownVoted(this.usr.userId));
+  fetchDownvoted() { //0
+    return this.http.get(urlConfig.listDownVoted('venkat'));
   }
-  fetchSaved() {
-    return this.http.get(urlConfig.listSaved(this.usr.userId));
+  fetchSaved() { //0 this.usr.userId
+    return this.http.get(urlConfig.listSaved('venkat'));
   }
   fetchSingleCategoryDetails(cid: number, page?: any) {
     const url = this.appendPage(page, urlConfig.getSingleCategoryDetails(cid));
@@ -121,8 +122,6 @@ export class DiscussionService {
     return this.http.get(`${url}&sort=${sort}`);
   }
   fetchNetworkProfile() {
-    return this.http.get<any>(urlConfig.fetchNetworkProfile);
+    return this.http.get<any>(urlConfig.userdetails('venkat'));
   }
-
-
 }
