@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Constants from '../../common/constants.json';
 
 @Component({
   selector: 'lib-discuss-home',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class DiscussHomeComponent implements OnInit {
 
   constructor() { }
+  
+  category: any = (Constants as any).default.categories[0];
 
   ngOnInit() {
   }
