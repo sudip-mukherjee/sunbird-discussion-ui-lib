@@ -1,3 +1,4 @@
+import { DiscussionDetailsComponent } from './../components/discussion-details/discussion-details.component';
 import { MyDiscussionComponent } from './../components/my-discussion/my-discussion.component';
 import { DiscussTagsComponent } from './../components/discuss-tags/discuss-tags.component';
 import { DiscussCategoryComponent } from './../components/discuss-category/discuss-category.component';
@@ -32,6 +33,11 @@ const routes: Routes = [
         path: 'my-discussion',
         pathMatch: 'full',
         component: MyDiscussionComponent
+      },
+      {
+        path: 'home/:topicId',
+        pathMatch: 'full',
+        component: DiscussionDetailsComponent
       }
     ]
   },

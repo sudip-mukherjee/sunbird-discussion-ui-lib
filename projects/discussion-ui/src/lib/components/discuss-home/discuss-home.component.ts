@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as Constants from '../../common/constants.json';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-discuss-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscussHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
+
+  topics: any = (Constants as any).default.topics;
 
   ngOnInit() {
   }
 
+  navigateToDiscussionDetails(topicId) {
+    this.router.navigate([`/discussion/home/${topicId}`]);
+  }
 }

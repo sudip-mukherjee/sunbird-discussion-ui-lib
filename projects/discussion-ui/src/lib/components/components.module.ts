@@ -8,6 +8,7 @@ import { DiscussHomeComponent } from './discuss-home/discuss-home.component';
 import { DiscussCategoryComponent } from './discuss-category/discuss-category.component';
 import { DiscussTagsComponent } from './discuss-tags/discuss-tags.component';
 import { MyDiscussionComponent } from './my-discussion/my-discussion.component';
+import { DiscussionDetailsComponent } from './discussion-details/discussion-details.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MyDiscussionComponent } from './my-discussion/my-discussion.component';
     DiscussCategoryComponent,
     DiscussTagsComponent,
     MyDiscussionComponent,
+    DiscussionDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { MyDiscussionComponent } from './my-discussion/my-discussion.component';
     DiscussHomeComponent,
     DiscussCategoryComponent,
     DiscussTagsComponent,
-    MyDiscussionComponent
+    MyDiscussionComponent,
+    DiscussionDetailsComponent
   ],
   providers: [
     DiscussionService
