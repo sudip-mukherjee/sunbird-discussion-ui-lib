@@ -6,7 +6,7 @@
       <!-- Card title-->
       <div>
         <a href="javascript:void(0)" i18n-aria-label role="link">
-          <h2 class="cursor-pointer f-medium" [innerHTML]="cardData.title"></h2>
+          <h2 class="cursor-pointer f-medium" [innerHTML]="cardData?.topic?.title"></h2>
         </a>
       </div>
       <!-- /Card title -->
@@ -16,8 +16,8 @@
         <span class="flex ws-mat-default-text">
           <!-- <mat-icon svgIcon="category_xs"></mat-icon>{{cardData.category.name}} -->
         </span>
-        <span class="dot" *ngIf="cardData?.user?.fullname">{{cardData?.user?.fullname}}</span>
-        <span class="dot" *ngIf="!(cardData?.user?.fullname)">{{'Anonymous'}}</span>
+        <span class="dot" *ngIf="cardData?.user?.username">{{cardData?.user?.username}}</span>
+        <span class="dot" *ngIf="!(cardData?.user?.username)">{{'Anonymous'}}</span>
         <!-- <span class="margin-left-l">{{cardData.timestamp | pipeRelativeTime}}</span> -->
       </div>
       <!-- /Card subtitle -->
