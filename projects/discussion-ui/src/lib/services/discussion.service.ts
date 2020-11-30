@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { of as observableOf, throwError as observableThrowError, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { urlConfig } from './../config/url.config';
-
-const HOST_URL = 'http://localhost:3002';
-
+import { NSDiscussData } from '../models/discuss.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +37,22 @@ export class DiscussionService {
   createPost(data: any) {
     return this.http.post(urlConfig.createPost, data);
   }
-
+  /**
+   * @description To get all the categories
+   */
   fetchAllCategories() {
-    return this.http.get(`${HOST_URL}/${urlConfig.getAllCategories}`);
+    return this.http.get<NSDiscussData.ICategorie[]>(urlConfig.getAllCategories()).pipe(
+      map((data: any) => {
+          // Taking only "categories" from the response 
+          let resp = (data as any).categories;
+          return resp;
+      }),
+      catchError( error => {
+        return throwError( 'Something went wrong!' );
+      })
+    );
   }
+
   fetchAllTag() {
     return this.http.get(urlConfig.getAllTags);
   }
@@ -105,13 +117,13 @@ export class DiscussionService {
     return this.http.get(urlConfig.fetchProfile(slug));
   }
   fetchUpvoted() {//0
-    return this.http.get(urlConfig.listUpVote('venkat'));
+    return this.http.get(urlConfig.listUpVote(urlConfig.userName));
   }
   fetchDownvoted() { //0
-    return this.http.get(urlConfig.listDownVoted('venkat'));
+    return this.http.get(urlConfig.listDownVoted(urlConfig.userName));
   }
   fetchSaved() { //0 this.usr.userId
-    return this.http.get(urlConfig.listSaved('venkat'));
+    return this.http.get(urlConfig.listSaved(urlConfig.userName));
   }
   fetchSingleCategoryDetails(cid: number, page?: any) {
     const url = this.appendPage(page, urlConfig.getSingleCategoryDetails(cid));
@@ -122,7 +134,7 @@ export class DiscussionService {
     return this.http.get(`${url}&sort=${sort}`);
   }
   fetchNetworkProfile() {
-    return this.http.get<any>(urlConfig.userdetails('venkat'));
+    return this.http.get<any>(urlConfig.userdetails(urlConfig.userName));
   }
 
   getTopicById(slug) {
