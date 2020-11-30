@@ -87,7 +87,7 @@ export class DiscussionService {
   }
 
   fetchRecentD(page?: any) {
-    const url = this.appendPage(page, urlConfig.recentPost);
+    const url = this.appendPage(page, urlConfig.recentPost());
     return this.http.get(url);
   }
   fetchPopularD(page?: any) {
@@ -135,5 +135,10 @@ export class DiscussionService {
   }
   fetchNetworkProfile() {
     return this.http.get<any>(urlConfig.userdetails(urlConfig.userName));
+  }
+
+  getTopicById(slug) {
+    const url = urlConfig.getTopicById(slug);
+    return this.http.get(url);
   }
 }
