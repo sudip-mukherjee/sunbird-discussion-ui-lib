@@ -1,12 +1,12 @@
 <!-- Card container -->
-<div class="discuss-card cursor-pointer border">
+<div (click)="openDiscussion()" class="discuss-card cursor-pointer border">
 
     <!-- Card header -->
     <div>
       <!-- Card title-->
       <div>
         <a href="javascript:void(0)" i18n-aria-label role="link">
-          <h2 class="cursor-pointer f-medium" [innerHTML]="discussionData.title"></h2>
+          <h2 class="cursor-pointer f-medium" [innerHTML]="discussionData?.topic?.title"></h2>
         </a>
       </div>
       <!-- /Card title -->
@@ -16,8 +16,8 @@
         <span class="flex ws-mat-default-text">
           <!-- <mat-icon svgIcon="category_xs"></mat-icon>{{discussionData.category.name}} -->
         </span>
-        <span class="dot" *ngIf="discussionData?.user?.fullname">{{discussionData?.user?.fullname}}</span>
-        <span class="dot" *ngIf="!(discussionData?.user?.fullname)">{{'Anonymous'}}</span>
+        <span class="dot" *ngIf="discussionData?.user?.username">{{discussionData?.user?.username}}</span>
+        <span class="dot" *ngIf="!(discussionData?.user?.username)">{{'Anonymous'}}</span>
         <!-- <span class="margin-left-l">{{discussionData.timestamp | pipeRelativeTime}}</span> -->
       </div>
       <!-- /Card subtitle -->

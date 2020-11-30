@@ -40,7 +40,6 @@ export class MyDiscussionComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.fillDummyData()
     // this.data = this.route.snapshot.data.profile.data;
     // this.discussionList = _.uniqBy(_.filter(this.data.posts, p => _.get(p, 'isMainPost') === true), 'tid');
     this.discussionList = this.data.posts.filter(p => (p.isMainPost === true));

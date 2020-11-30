@@ -2,13 +2,13 @@
   <div class="flex-custom">
     <div class="profileCard">
       <div class="example-header-image">
-        <lib-avatar-photo *ngIf="profilePhoto" [photoUrl]="profilePhoto" [name]="data.fullname || 'User'" size="xl-s">
+        <lib-avatar-photo *ngIf="profilePhoto" [photoUrl]="profilePhoto" [name]="data?.fullname || 'User'" size="xl-s">
         </lib-avatar-photo>
-        <lib-avatar-photo *ngIf="!profilePhoto" [photoUrl]="profilePhoto" [name]="data.fullname || 'User'" size="xl-s">
+        <lib-avatar-photo *ngIf="!profilePhoto" [photoUrl]="profilePhoto" [name]="data?.fullname || 'User'" size="xl-s">
         </lib-avatar-photo>
       </div>
       <div class="flex-1">
-        <div class="mobile-margin text-capitalize" [innerHTML]="data.fullname"></div>
+        <div class="mobile-margin text-capitalize" [innerHTML]="data?.fullname"></div>
         <div>{{department}}</div>
         <div>{{location}} </div>
         <div>{{data.email || data.username}}</div>

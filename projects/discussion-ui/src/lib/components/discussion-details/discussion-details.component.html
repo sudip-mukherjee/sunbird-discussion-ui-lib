@@ -1,3 +1,107 @@
-<p>
-  Welcome to topic details page
-</p>
+<div>
+  <h2>{{topicDetails.title}}</h2>
+  <ng-container *ngFor="let post of topicDetails.posts">
+    <div class="margin-left-m mb-0-imp">
+      <p role="link" tabindex="0">{{ post.content | pipeHtmlTagRemoval}}</p>
+      <div class="flex flex-1" role="link" tabindex="0">
+        <lib-avatar-photo [name]="post.user.fullname || 'Anonymous'" size="s"></lib-avatar-photo>
+        <span class="margin-left-s">{{'Asked by '}}</span>
+        <span class="margin-left-s capitalize f-medium" *ngIf="post.user.fullname"
+          [innerHTML]="post.user.fullname"></span>
+        <span class="margin-left-s capitalize f-medium" *ngIf="!post.user.fullname"
+          [innerHTML]="post.user.username"></span>
+        <span class="margin-left-s">{{ post.timestamp | date}}</span>
+      </div>
+    </div>
+    <div class="flex flex-1 margin-top-m" role="link" tabindex="0" aria-label="tags">
+      <ng-container *ngIf="topicDetails && topicDetails?.tags && topicDetails?.tags?.length > 0">
+        <span *ngFor="let tag of topicDetails?.tags" class="tag"  role="link" tabindex="0"
+          i18n-aria-label>
+          {{tag?.value}}
+        </span>
+      </ng-container>
+    </div>
+
+    <div class="flex flex-1 flex-wrap custom margin-0 margin-top-xl">
+      <div class="flex flex-1 flex-row margin-left-xs margin-right-xs">
+        <span class="flex margin-right-l mobile">
+          <a href="javascript:void(0)" i18n-aria-label role="link" *ngIf="!post?.upvoted"  (click)="upvote(post)"
+            aria-label="upvote the post">
+            <span>u</span>
+          </a>
+          <a href="javascript:void(0)" i18n-aria-label *ngIf="post?.upvoted" role="link" (click)="delteVote(post)"
+            aria-label="remove upvote">
+            <span>u</span>
+          </a>
+          <span class="pad-4" role="text"
+            [attr.aria-label]="'total upvoat is' + topicDetails?.upvotes">{{topicDetails?.upvotes}}</span>
+        </span>
+        <span class="flex margin-right-l mobile">
+          <a href="javascript:void(0)" *ngIf="!post?.downvoted" i18n-aria-label role="link"
+            (click)="downvote(post)" aria-label="downvote post">
+            <span>d</span>
+
+          </a>
+          <a href="javascript:void(0)" *ngIf="post.downvoted" i18n-aria-label role="link"
+            (click)="delteVote(post)" aria-label="remove down vote">
+            <span>d</span>
+
+          </a>
+          <span class="pad-4" role="text"
+            [attr.aria-label]="'total down vote is' + topicDetails.upvotes">{{topicDetails.downvotes}}</span>
+        </span>
+        <span class="flex margin-right-l mobile" role="link" tabindex="0">
+<span>t</span>
+          <span class="pad-4" i18n-aria-label aria-label="views count">{{topicDetails.viewcount}} views</span>
+        </span>
+        <span class="flex mobile">
+          <a href="javascript:void(0)" *ngIf="!topicDetails.posts[0].bookmarked" i18n-aria-label role="link"
+            (click)="bookmark(post)" aria-label="Bookmark post">
+            <span>b</span>
+          </a>
+          <a href="javascript:void(0)" *ngIf="topicDetails.posts[0].bookmarked" i18n-aria-label role="link"
+            (click)="unBookMark(post)" aria-label="unBookmark post">
+            <span>b</span>>
+          </a>
+        </span>
+      </div>
+      <div class="flex flex-1" class="cursor-pointer  mobile2">
+        <span class="noocoments ws-mat-default-text" *ngIf="topicDetails.postcount-1 > 0" i18n-aria-label
+          aria-label="comments count">
+          {{topicDetails.postcount-1}}
+          comments
+        </span>
+        <span class="noocoments ws-mat-default-text" *ngIf="topicDetails.postcount-1 <=0" i18n-aria-label
+          aria-label="comments count">
+          0
+          comments</span>
+      </div>
+    </div>
+
+ 
+  </ng-container>
+
+  <div>
+    <h3>Your answer here</h3>
+    <textarea></textarea>
+    <button>Post reply</button>
+  </div>
+  <!-- <div>
+    <div>
+    <span>up arrow 0</span>
+    <span>down arrow 0</span>
+    <span>views 0</span>
+    <span>save image</span>
+  </div>
+    <span>comments 0</span>
+  </div> -->
+ 
+
+  
+</div>
+
+
+
+
+
+
