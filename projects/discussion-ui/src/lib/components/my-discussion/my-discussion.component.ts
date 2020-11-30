@@ -1,6 +1,6 @@
 import { DiscussionService } from './../../services/discussion.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { NSDiscussData } from '../../models/discuss.model';
 // import { ConfigurationsService } from '@ws-widget/utils';
 
@@ -18,15 +18,21 @@ export class MyDiscussionComponent implements OnInit {
   location!: string | null;
   profilePhoto!: string;
 
-  constructor(private route: ActivatedRoute, private discussService: DiscussionService, /* private configSvc: ConfigurationsService */) {
+  constructor(public router: Router,
+              private route: ActivatedRoute,
+              private discussService: DiscussionService, /* private configSvc: ConfigurationsService */) {
     this.fetchNetworkProfile();
   }
- 
+
+  openTopicDetails(slug) {
+    this.router.navigate([`/discussion/home/${slug}`]);
+  }
 
   fetchNetworkProfile() {
     this.discussService.fetchNetworkProfile().subscribe(response => {
       console.log(response);
-      this.profilePhoto =  'http://localhost:4567/assets/uploads/profile/1-profileavatar.png'; // response['uploadedpicture']; // _.get(_.first(response), 'photo');
+      // TODO: need to update the photo url
+      this.profilePhoto = 'http://localhost:4567/assets/uploads/profile/1-profileavatar.png'; // response['uploadedpicture']; // _.get(_.first(response), 'photo');
       this.data = response;
       // if (this.configSvc.userProfile) {
       //   localStorage.setItem(this.configSvc.userProfile.userId, this.profilePhoto);

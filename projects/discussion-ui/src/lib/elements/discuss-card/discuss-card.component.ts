@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class DiscussCardComponent implements OnInit {
 
   @Input() discussionData: any;
+  @Output() openTopicDetails = new EventEmitter();
 
   constructor(public router: Router) { }
 
@@ -16,7 +17,8 @@ export class DiscussCardComponent implements OnInit {
   }
 
   openDiscussion() {
-    this.router.navigate([`/discussion/home/${this.discussionData.slug || this.discussionData.topic.slug}`]);
+    const slug = this.discussionData.slug || this.discussionData.topic.slug;
+    this.openTopicDetails.emit(slug);
   }
 
 }

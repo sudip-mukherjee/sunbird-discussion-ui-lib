@@ -71,7 +71,7 @@
   </ng-container>
   <ng-container *ngIf="discussionList && discussionList.length > 0">
     <ng-container *ngFor="let data of discussionList">
-      <lib-discuss-card [discussionData]="data"></lib-discuss-card>
+      <lib-discuss-card [discussionData]="data" (openTopicDetails)="openTopicDetails($event)"></lib-discuss-card>
     </ng-container>
   </ng-container>
   <ng-container *ngIf="!(discussionList && discussionList.length > 0)">

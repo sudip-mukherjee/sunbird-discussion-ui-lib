@@ -12,7 +12,7 @@ export class DiscussHomeComponent implements OnInit {
 
   constructor(public router: Router, private discussService: DiscussionService) { }
 
-  topics: any = (Constants as any).default.topics;
+  topics: any;
 
   ngOnInit() {
     this.getTopics();
@@ -24,7 +24,8 @@ export class DiscussHomeComponent implements OnInit {
       this.topics = res['topics'];
     });
   }
-  navigateToDiscussionDetails(slug) {
+
+  openTopicDetails(slug) {
     this.router.navigate([`/discussion/home/${slug}`]);
   }
 }
